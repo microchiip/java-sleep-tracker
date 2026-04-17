@@ -45,11 +45,6 @@ public class SleepTrackerApp {
     }
 
     public static void main(String[] args) {
-        if (args.length < 1) {
-            System.out.println("Usage: java SleepTrackerApp <path-to-sleep-log>");
-            return;
-        }
-
         try {
             List<SleepingSession> sessions = readSleepLog(args[0]);
             SleepTrackerApp app = new SleepTrackerApp();
