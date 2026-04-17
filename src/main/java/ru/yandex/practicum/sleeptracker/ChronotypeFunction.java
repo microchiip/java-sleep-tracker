@@ -8,9 +8,9 @@ import java.util.stream.Collectors;
 public class ChronotypeFunction implements AnalyticsFunction {
 
     enum Chronotype {
-        OWL("Сова"),
-        LARK("Жаворонок"),
-        PIGEON("Голубь");
+        OWL("Owl"),
+        LARK("Lark"),
+        PIGEON("Pigeon");
 
         private final String displayName;
 
@@ -25,7 +25,7 @@ public class ChronotypeFunction implements AnalyticsFunction {
 
     @Override
     public String getName() {
-        return "Хронотип";
+        return "Chronotype";
     }
 
     @Override
@@ -49,11 +49,8 @@ public class ChronotypeFunction implements AnalyticsFunction {
     }
 
     private boolean isNightSession(SleepingSession session) {
-        if (!session.getFallAsleepTime().toLocalDate().equals(session.getWakeUpTime().toLocalDate())) {
-            return true;
-        }
         LocalTime fallAsleepTime = session.getFallAsleepTime().toLocalTime();
-        return fallAsleepTime.isBefore(LocalTime.of(6, 0));
+        return !fallAsleepTime.isBefore(LocalTime.of(18, 0)) || fallAsleepTime.isBefore(LocalTime.of(6, 0));
     }
 
     Chronotype classifySession(SleepingSession session) {
