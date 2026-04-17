@@ -49,8 +49,11 @@ public class ChronotypeFunction implements AnalyticsFunction {
     }
 
     private boolean isNightSession(SleepingSession session) {
+        if (!session.getFallAsleepTime().toLocalDate().equals(session.getWakeUpTime().toLocalDate())) {
+            return true;
+        }
         LocalTime fallAsleepTime = session.getFallAsleepTime().toLocalTime();
-        return !fallAsleepTime.isBefore(LocalTime.of(18, 0)) || fallAsleepTime.isBefore(LocalTime.of(6, 0));
+        return fallAsleepTime.isBefore(LocalTime.of(6, 0));
     }
 
     Chronotype classifySession(SleepingSession session) {
