@@ -8,9 +8,9 @@ import java.util.stream.Collectors;
 public class ChronotypeFunction implements AnalyticsFunction {
 
     enum Chronotype {
-        OWL("Owl"),
-        LARK("Lark"),
-        PIGEON("Pigeon");
+        OWL("Сова"),
+        LARK("Жаворонок"),
+        PIGEON("Голубь");
 
         private final String displayName;
 
@@ -25,7 +25,7 @@ public class ChronotypeFunction implements AnalyticsFunction {
 
     @Override
     public String getName() {
-        return "Chronotype";
+        return "Хронотип";
     }
 
     @Override
